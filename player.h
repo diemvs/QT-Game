@@ -4,6 +4,9 @@
 #include <QObject>
 #include <QTimer>
 #include <QPointF>
+#include <QDebug>
+#include <QKeyEvent>
+#include <QGraphicsScene>
 
 class Player :public QObject, public QGraphicsPixmapItem
 {
@@ -15,6 +18,7 @@ public:
 private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     QRectF boundingRect() const;
+
 public slots:
     void nextFrame();
     void move();
@@ -24,7 +28,6 @@ private:
     QPixmap *_sprite;
     int _currentFrame;
     QPointF _speed, _position;
-
 
 };
 

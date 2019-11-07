@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>Resources/PNG/Human/human_nude_hair.png</file>
+        <file>Resources/Sprites/wall/1.png</file>
+        <file>Resources/Sprites/wall/2.png</file>
+        <file>Resources/Sprites/wall/3.png</file>
+        <file>Resources/Sprites/Enemies/bat.png</file>
+    </qresource>
+</RCC>

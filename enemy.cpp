@@ -1,19 +1,20 @@
 #include "enemy.h"
 
-#include <QTimer>
-#include <QDebug>
-#include <QGraphicsScene>
-#include <stdlib.h>
-
-
 Enemy::Enemy(int x, int y)
 {
-    //int random_number_1 = rand() % 700;
-    //int random_number_2 = rand() % 500;
+    _currentFrame = 0;
     setPos(x, y);
-    //setRect(0, 0, 20,20);
-    //setPixmap(QPixmap(":/images/im.jpg")); //":/images/im.jpg"
-    setRect(0, 0, 30, 30);
+    _sprite = new QPixmap(":/images/Resources/Sprites/Enemies/bat.png");
+    _timer = new QTimer();
+    connect(_timer, &QTimer::timeout, this, &Enemy::nextFrame);
+    _timer->start(100);
+}
+
+void Enemy::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+    painter->drawPixmap(0,0, *_sprite, _currentFrame, 0, 30,30);
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
 }
 
 void Enemy::move()
@@ -50,4 +51,15 @@ void Enemy::move()
                  }
                      break;
     }
+}
+
+void Enemy::nextFrame(){
+    _currentFrame += 30;
+        if (_currentFrame >= 90 ) _currentFrame = 0;
+        this->update(0,0,30,30);
+}
+
+QRectF Enemy::boundingRect() const
+{
+    return QRectF(0,0,30,30);
 }

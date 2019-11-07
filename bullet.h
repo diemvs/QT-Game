@@ -3,6 +3,10 @@
 
 #include <QGraphicsRectItem>
 #include <QObject>
+#include <QTimer>
+#include <QDebug>
+#include <QGraphicsScene>
+#include <QList>
 
 enum directionType {
     UP, DOWN, LEFT, RIGHT

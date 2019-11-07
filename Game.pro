@@ -41,7 +41,8 @@ HEADERS += \
         game.h \
         health.h \
         player.h \
-        score.h
+        score.h \
+        structs.h
 
 FORMS += \
         game.ui

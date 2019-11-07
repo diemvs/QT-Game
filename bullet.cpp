@@ -2,10 +2,7 @@
 #include "enemy.h"
 #include "game.h"
 
-#include <QTimer>
-#include <QDebug>
-#include <QGraphicsScene>
-#include <QList>
+
 
 
 extern Game *game;

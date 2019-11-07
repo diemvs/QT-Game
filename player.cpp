@@ -2,10 +2,6 @@
 #include "bullet.h"
 #include "enemy.h"
 
-#include <QDebug>
-#include <QKeyEvent>
-#include <QGraphicsScene>
-
 void Player::keyPressEvent(QKeyEvent *event)
 {
     //_timerMovement->start(100);
@@ -35,11 +31,8 @@ void Player::keyPressEvent(QKeyEvent *event)
         scene()->addItem(bullet);
     }
     else if(event->key() == Qt::Key_A){
-        //if (pos().x() > 0)
-        //setPos(x()-10, y());
         _speed.setX(-10);
         move();
-        //_speed.setX(0);
     }
     else if (event->key() == Qt::Key_D){
         //if (pos().x() + 100 < 900)

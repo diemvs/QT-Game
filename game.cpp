@@ -3,11 +3,6 @@
 #include "enemy.h"
 #include "level.h"
 
-#include <QTimer>
-#include <QGraphicsTextItem>
-#include <QFont>
-#include <QKeyEvent>
-
 using namespace std;
 
 Game::Game(QWidget *parent){
@@ -20,14 +15,13 @@ Game::Game(QWidget *parent){
 
     setFixedSize(900,600);
 
-
     player = new Player();
+
     player->setPos(400,500);
     gameScene->addItem(player);
 
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
-    //connect (_timer, &QTimer::timeout, this, &Player::move);
 
     _level("C:\\qt_proj\\Game\\Resources\\Levels\\level_1.txt");
     _levelGeneration();
@@ -39,7 +33,6 @@ Game::Game(QWidget *parent){
 
 void Game::_level(string path){
     ifstream file;
-    //file.open("C:\\qt_proj\\Game\\level_1.txt");
     file.open(path);
     int row = 0;
     string st;
@@ -59,23 +52,28 @@ void Game::_level(string path){
 }
 
 void Game::_levelGeneration(){
+    sceneItems item;
     for (int i = 0; i < 30; i++){
         for (int j = 0; j < 20; j++){
             switch(array[i][j]){
             case 'a': {
-
-            Enemy *enemy = new Enemy(i*30, j*30);
-            gameScene->addItem(enemy);
+             item = bricks_1;
+            Construction *construction = new Construction(i*30, j*30, item);
+            gameScene->addItem(construction);
                 break;
             }
             case 'b':{
-
-
+                item = bricks_2;
+                Construction *construction = new Construction(i*30, j*30, item);
+                gameScene->addItem(construction);
                 break;
             }
-            case 'c':
-
+            case 'c':{
+                item = flag_1;
+                Construction *construction = new Construction(i*30, j*30, item);
+                gameScene->addItem(construction);
                 break;
+            }
             case 'd':
 
                 break;
@@ -91,7 +89,10 @@ void Game::_levelGeneration(){
             case 'h':
 
                 break;
-            case 'i':
+            case 'i': {
+                Enemy *enemy = new Enemy(i*30, j*30);
+                gameScene->addItem(enemy);
+            }
 
                 break;
             case 'j':

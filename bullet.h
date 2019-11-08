@@ -8,9 +8,7 @@
 #include <QGraphicsScene>
 #include <QList>
 
-enum directionType {
-    UP, DOWN, LEFT, RIGHT
-};
+#include "structs.h"
 
 class Bullet:public QObject, public QGraphicsRectItem
 {
@@ -27,6 +25,14 @@ public slots:
     void moveRight();
 
     void move(directionType type);
+private:
+    QPixmap *_sprite;
+    int _currentFrame = 0;
+
+private:
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    QRectF boundingRect() const;
+
 
 };
 

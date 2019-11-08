@@ -1,10 +1,25 @@
 #include "enemy.h"
 
-Enemy::Enemy(int x, int y)
+Enemy::Enemy(int x, int y, sceneItems enemyType)
 {
     _currentFrame = 0;
     setPos(x, y);
-    _sprite = new QPixmap(":/images/Resources/Sprites/Enemies/bat.png");
+    switch(enemyType){
+    case bat:{
+        _sprite = new QPixmap(":/images/Resources/Sprites/Enemies/bat.png");
+        break;
+    }
+    case skeleton:{
+        _sprite = new QPixmap(":/images/Resources/Sprites/Enemies/skeleton.png");
+        break;
+    }
+    case orc:{
+        _sprite = new QPixmap(":/images/Resources/Sprites/Enemies/orc.png");
+        break;
+    }
+    }
+
+
     _timer = new QTimer();
     connect(_timer, &QTimer::timeout, this, &Enemy::nextFrame);
     _timer->start(100);

@@ -28,12 +28,13 @@ public:
     Score *score;
     QGraphicsScene *gameScene;
 
+    char array[30][20];
+
 private:
     void _level(string path);
     void _levelGeneration();
 
 private:
-    char array[30][20];
     QTimer _timer;
 
 };

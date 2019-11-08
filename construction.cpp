@@ -5,7 +5,6 @@ Construction::Construction(int x, int y, sceneItems wallType)
 {
 
     switch (wallType){
-
     case bricks_1:{
         _sprite = new QPixmap (":/images/Resources/Sprites/wall/1.png");
         setPos(x, y);
@@ -18,6 +17,21 @@ Construction::Construction(int x, int y, sceneItems wallType)
     }
     case flag_1:{
         _sprite = new QPixmap (":/images/Resources/Sprites/wall/3.png");
+        setPos(x, y);
+        break;
+    }
+    case leftSideBricks:{
+        _sprite = new QPixmap (":/images/Resources/Sprites/wall/4.png");
+        setPos(x, y);
+        break;
+    }
+    case bricks_3:{
+        _sprite = new QPixmap (":/images/Resources/Sprites/wall/6.png");
+        setPos(x, y);
+        break;
+    }
+    case bricks_4:{
+        _sprite = new QPixmap (":/images/Resources/Sprites/wall/7.png");
         setPos(x, y);
         break;
     }

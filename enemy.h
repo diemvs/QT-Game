@@ -15,7 +15,7 @@ class Enemy:public QObject, public QGraphicsRectItem
 {
     Q_OBJECT
 public:
-    Enemy(int x, int y);
+    Enemy(int x, int y, sceneItems enemyType);
 
 private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);

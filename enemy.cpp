@@ -6,23 +6,40 @@ Enemy::Enemy(int x, int y, sceneItems enemyType)
     setPos(x, y);
     switch(enemyType){
     case bat:{
-        _sprite = new QPixmap(":/images/Resources/Sprites/Enemies/bat.png");
+        _sprite = new QPixmap(":/images/Resources/Sprites/Enemies/bat_1.png");
         break;
     }
     case skeleton:{
-        _sprite = new QPixmap(":/images/Resources/Sprites/Enemies/skeleton.png");
+        _sprite = new QPixmap(":/images/Resources/Sprites/Enemies/skeleton_1.png");
         break;
     }
     case orc:{
-        _sprite = new QPixmap(":/images/Resources/Sprites/Enemies/orc.png");
+        _sprite = new QPixmap(":/images/Resources/Sprites/Enemies/orc_1.png");
         break;
     }
     }
-
-
     _timer = new QTimer();
     connect(_timer, &QTimer::timeout, this, &Enemy::nextFrame);
     _timer->start(100);
+}
+
+Enemy::~Enemy()
+{
+    _sprite = nullptr;
+    _currentFrame = 0;
+    _timer = nullptr;
+    game = nullptr;
+}
+
+int Enemy::damage()
+{
+    lifes--;
+
+    if(lifes == 0){
+        qDebug() << "enemy.cpp: damage";
+        delete this;
+    }
+    return lifes;
 }
 
 void Enemy::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -34,8 +51,7 @@ void Enemy::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 
 void Enemy::move()
 {
-    //int random_number = rand() % 5;
-    int random_number = 0;
+    /*int random_number = 0;
     switch(random_number) {
         case 1:
         setPos(x(), y()+5);
@@ -65,7 +81,7 @@ void Enemy::move()
                      delete this;
                  }
                      break;
-    }
+    }*/
 }
 
 void Enemy::nextFrame(){

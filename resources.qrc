@@ -11,21 +11,5 @@
         <file>Resources/Sprites/Bullet/bullet.png</file>
         <file>Resources/Sprites/wall/6.png</file>
         <file>Resources/Sprites/wall/7.png</file>
-        <file>Resources/Sprites/wall/8.png</file>
-        <file>Resources/Sprites/wall/9.png</file>
-        <file>Resources/Sprites/wall/10.png</file>
-        <file>Resources/Sprites/wall/11.png</file>
-        <file>Resources/Sprites/wall/12.png</file>
-        <file>Resources/Sprites/wall/13.png</file>
-        <file>Resources/Sprites/wall/14.png</file>
-        <file>Resources/Sprites/wall/15.png</file>
-        <file>Resources/Sprites/wall/16.png</file>
-        <file>Resources/Sprites/wall/17.png</file>
-        <file>Resources/Sprites/wall/18.png</file>
-        <file>Resources/Sprites/background/bg.png</file>
-        <file>Resources/Sprites/background/bg_2.png</file>
-        <file>Resources/Sprites/Enemies/bat_1.png</file>
-        <file>Resources/Sprites/Enemies/orc_1.png</file>
-        <file>Resources/Sprites/Enemies/skeleton_1.png</file>
     </qresource>
 </RCC>

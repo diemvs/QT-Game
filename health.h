@@ -6,9 +6,6 @@ class Health
 {
 public:
     Health();
-    void decrease();
-private:
-    int health;
 };
 
 #endif // HEALTH_H

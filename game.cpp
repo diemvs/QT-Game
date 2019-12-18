@@ -1,16 +1,11 @@
 #include "game.h"
-//#include "bullist.h"
-//#include "bullet.h"
-//#include "enemy.h"
-
-
-
-#include <QImage>
+#include "bullet.h"
+#include "enemy.h"
+#include "level.h"
 
 using namespace std;
 
 Game::Game(QWidget *parent){
-
 
     gameScene = new QGraphicsScene();
     gameScene->setSceneRect(0,0,900,600);
@@ -27,11 +22,8 @@ Game::Game(QWidget *parent){
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
 
-    setBackgroundBrush(QBrush(QImage(":/images/Resources/Sprites/background/bg_2.png")));
     _level("C:\\qt_proj\\Game\\Resources\\Levels\\level_1.txt");
     _levelGeneration();
-
-    qDebug() << "game.cpp: Size of enemylist = " << enemyList.size();
 
     show();
     _timer.start(100);
@@ -43,7 +35,10 @@ void Game::_level(string path){
     int row = 0;
     string st;
     char *str = new char[256];
+
     str[0] = 0;
+
+    //char str[256];
     while(getline(file, st)){
         for (int k = 0; k < 30; k++){
             array[k][row] = st[k];
@@ -54,11 +49,6 @@ void Game::_level(string path){
 
 void Game::_levelGeneration(){
     sceneItems item;
-    item = bat;
-    Enemy *enemy = new Enemy(90, 90, item);
-    gameScene->addItem(enemy);
-    enemyList.append(enemy);
-
     for (int i = 0; i < 30; i++){
         for (int j = 0; j < 20; j++){
             switch(array[i][j]){
@@ -100,12 +90,9 @@ void Game::_levelGeneration(){
                 break;
             }
 
-            case 'g':{
-                item = zelda_diamond;
-                Construction *construction = new Construction(i*30, j*30, item);
-                gameScene->addItem(construction);
+            case 'g':
+
                 break;
-            }
             case 'h':
 
                 break;
@@ -113,7 +100,6 @@ void Game::_levelGeneration(){
                 item = bat;
                 Enemy *enemy = new Enemy(i*30, j*30, item);
                 gameScene->addItem(enemy);
-                enemyList.append(enemy);
             }
 
                 break;
@@ -121,20 +107,16 @@ void Game::_levelGeneration(){
                 item = skeleton;
                 Enemy *enemy = new Enemy(i*30, j*30, item);
                 gameScene->addItem(enemy);
-                enemyList.append(enemy);
-
             }
                 break;
             case 'k':{
                 item = orc;
                 Enemy *enemy = new Enemy(i*30, j*30, item);
                 gameScene->addItem(enemy);
-                enemyList.append(enemy);
             }
 
                 break;
             case 'l':
-
 
                 break;
             case 'm':
@@ -176,67 +158,7 @@ void Game::_levelGeneration(){
             case 'z':
 
                 break;
-            case '1':{
-                item = zelda_bricks_1;
-                Construction *construction = new Construction(i*30, j*30, item);
-                gameScene->addItem(construction);
-                break;
-            }
-            case '2':{
-                item = zelda_bricks_2;
-                Construction *construction = new Construction(i*30, j*30, item);
-                gameScene->addItem(construction);
-                break;
-            }
-            case '3':{
-                item = zelda_bricks_3;
-                Construction *construction = new Construction(i*30, j*30, item);
-                gameScene->addItem(construction);
-                break;
-            }
-            case '4':{
-                item = zelda_bricks_4;
-                Construction *construction = new Construction(i*30, j*30, item);
-                gameScene->addItem(construction);
-                break;
-            }
-            case '5':{
-                item = zelda_bricks_5;
-                Construction *construction = new Construction(i*30, j*30, item);
-                gameScene->addItem(construction);
-                break;
-            }
-            case '6':{
-                item = zelda_bricks_6;
-                Construction *construction = new Construction(i*30, j*30, item);
-                gameScene->addItem(construction);
-                break;
-            }
-            case '7':{
-                item = zelda_bricks_7;
-                Construction *construction = new Construction(i*30, j*30, item);
-                gameScene->addItem(construction);
-                break;
-            }
-            case '8':{
-                item = zelda_bricks_8;
-                Construction *construction = new Construction(i*30, j*30, item);
-                gameScene->addItem(construction);
-                break;
-            }
 
-            case '9':{
-                item = zelda_bricks_9;
-                Construction *construction = new Construction(i*30, j*30, item);
-                gameScene->addItem(construction);
-                break;
-            }
-            case '0':{
-                item = zelda_bricks_10;
-                Construction *construction = new Construction(i*30, j*30, item);
-                gameScene->addItem(construction);
-                break;
-            }
             }
         }
     }

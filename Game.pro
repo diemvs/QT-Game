@@ -26,7 +26,6 @@ CONFIG += c++11
 
 SOURCES += \
         bullet.cpp \
-        bullist.cpp \
         construction.cpp \
         enemy.cpp \
         health.cpp \
@@ -37,7 +36,6 @@ SOURCES += \
 
 HEADERS += \
         bullet.h \
-        bullist.h \
         construction.h \
         enemy.h \
         game.h \

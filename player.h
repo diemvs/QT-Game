@@ -8,10 +8,6 @@
 #include <QKeyEvent>
 #include <QGraphicsScene>
 
-#include "construction.h"
-#include "bullet.h"
-#include "bullist.h"
-
 class Player :public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
@@ -19,7 +15,6 @@ public:
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     Player();
-    //QList<Bullet *> bulList;
 private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     QRectF boundingRect() const;

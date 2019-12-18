@@ -8,33 +8,27 @@
 #include <QGraphicsScene>
 #include <QList>
 
-//#include "structs.h"
-//#include "enemy.h"
-#include "construction.h"
+#include "structs.h"
 
-
-class Bullet:public QObject, public QGraphicsPixmapItem
+class Bullet:public QObject, public QGraphicsRectItem
 {
     Q_OBJECT
 public:
-    QList<QGraphicsItem *> colliding_Items = collidingItems();
-
-public:
 
     Bullet(directionType type);
-    bool collidesWithItem(const Enemy *enemy, Qt::ItemSelectionMode mode) const;
+
 
 public slots:
     void moveUp();
     void moveDown();
     void moveLeft();
     void moveRight();
+
+    void move(directionType type);
 private:
     QPixmap *_sprite;
-
     int _currentFrame = 0;
-    int graduate = 0;
-    int ig, jg;
+
 private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     QRectF boundingRect() const;

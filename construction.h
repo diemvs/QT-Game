@@ -1,7 +1,7 @@
 #ifndef CONSTRUCTION_H
 #define CONSTRUCTION_H
 
-#include "enemy.h"
+#include "structs.h"
 
 #include <QObject>
 #include <QGraphicsPixmapItem>
@@ -15,9 +15,8 @@ public:
 
 private:
     QPixmap *_sprite;
-public:
-    //QList <QObject *> bulList;
-    QList<char> sceneConstructions;
+    int _currentFrame = 0;
+
 private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     QRectF boundingRect() const;

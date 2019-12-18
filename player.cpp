@@ -1,73 +1,60 @@
 #include "player.h"
-
-//#include "enemy.h"
-
-#include "game.h"
-//#include "construction.h"
+#include "bullet.h"
+#include "enemy.h"
 
 extern Game *game;
-
-
 
 void Player::keyPressEvent(QKeyEvent *event)
 {
     //_timerMovement->start(100);
-    //qDebug() << "key = " << event->key();
     //выстрел
-    /*if (event->key() == Qt::Key_Up){
+    if (event->key() == Qt::Key_Up){
         directionType type = UP;
         Bullet *bullet = new Bullet(type);
-
         bullet->setPos(x()-5, y()-20);
         scene()->addItem(bullet);
-        game->bul.bulletList.append(bullet);
-        qDebug() << "player.cpp: count of bullet: " << game->bul.bulletList.size();
     }
     else if (event->key() == Qt::Key_Down){
         directionType type = DOWN;
         Bullet *bullet = new Bullet(type);
         bullet->setPos(x()-5, y()+10);
         scene()->addItem(bullet);
-        game->bul.bulletList.append(bullet);
-        qDebug() << "player.cpp: count of bullet: " << game->bul.bulletList.size();
     }
     else if (event->key() == Qt::Key_Left){
         directionType type = LEFT;
         Bullet *bullet = new Bullet(type);
         bullet->setPos(x()-20, y()-5);
         scene()->addItem(bullet);
-        game->bul.bulletList.append(bullet);
-        qDebug() << "player.cpp: count of bullet: " << game->bul.bulletList.size();
     }
     else if (event->key() == Qt::Key_Right){
         directionType type = RIGHT;
         Bullet *bullet = new Bullet(type);
         bullet->setPos(x()+10, y()-5);
         scene()->addItem(bullet);
-        game->bul.bulletList.append(bullet);
-        qDebug() << "player.cpp: count of bullet: " << game->bul.bulletList.size();
     }
-    else */if(event->key() == Qt::Key_A || event->key() == 1060){
+    else if(event->key() == Qt::Key_A){
         _speed.setX(-10);
         move();
     }
-    else if (event->key() == Qt::Key_D || event->key() == 1042){
+    else if (event->key() == Qt::Key_D){
         //if (pos().x() + 100 < 900)
         //setPos(x()+10, y());
-
+        //qDebug() << "Key D pressed";
         _speed.setX(10);
         move();
         //_speed.setX(0);
     }
-    else if (event->key() == Qt::Key_W || event->key() == 1062){
+    else if (event->key() == Qt::Key_W){
         //if (pos().y() > 0)
         //setPos(x(), y()-10);
+        //qDebug() << "Key W pressed";
         if(!event->isAutoRepeat())
         _speed.setY(-10);
         move();
+        //_speed.setY(0);
 
     }
-    else if (event->key() == Qt::Key_S || event->key() == 1067){
+    else if (event->key() == Qt::Key_S){
         //if (pos().y() < 600)
         //setPos(x(), y()+10);
         _speed.setY(10);
@@ -83,45 +70,10 @@ void Player::keyPressEvent(QKeyEvent *event)
 void Player::keyReleaseEvent(QKeyEvent *event)
 {
     //qDebug()<< "key released";
-    //qDebug () << event->isAutoRepeat();
-
+    qDebug () << event->isAutoRepeat();
     if(!event->isAutoRepeat()){
         _speed.setX(0);
         _speed.setY(0);
-
-        if (event->key() == Qt::Key_Up){
-                directionType type = UP;
-                Bullet *bullet = new Bullet(type);
-
-                bullet->setPos(x()-5, y()-20);
-                scene()->addItem(bullet);
-                game->bul.bulletList.append(bullet);
-                qDebug() << "player.cpp: count of bullet: " << game->bul.bulletList.size();
-            }
-            else if (event->key() == Qt::Key_Down){
-                directionType type = DOWN;
-                Bullet *bullet = new Bullet(type);
-                bullet->setPos(x()-5, y()+10);
-                scene()->addItem(bullet);
-                game->bul.bulletList.append(bullet);
-                qDebug() << "player.cpp: count of bullet: " << game->bul.bulletList.size();
-            }
-            else if (event->key() == Qt::Key_Left){
-                directionType type = LEFT;
-                Bullet *bullet = new Bullet(type);
-                bullet->setPos(x()-20, y()-5);
-                scene()->addItem(bullet);
-                game->bul.bulletList.append(bullet);
-                qDebug() << "player.cpp: count of bullet: " << game->bul.bulletList.size();
-            }
-            else if (event->key() == Qt::Key_Right){
-                directionType type = RIGHT;
-                Bullet *bullet = new Bullet(type);
-                bullet->setPos(x()+10, y()-5);
-                scene()->addItem(bullet);
-                game->bul.bulletList.append(bullet);
-                qDebug() << "player.cpp: count of bullet: " << game->bul.bulletList.size();
-            }
     }
 }
 
@@ -157,27 +109,23 @@ void Player::move()
 
     ig = _position.x()/30;
     jg = _position.y()/30;
-
-    //for(int i = 0; i < construction->sceneConstructions.size(); i++){
-
-    if(game->array[ig][jg+1] != '_'){
+    if(game->array[ig][jg+1] == 'a'){
         botGraduate = (jg+1)*30;
     }
-    if(game->array[ig][jg-1] != '_'){
+    if(game->array[ig][jg-1] == 'a'){
         topGraduate = jg*30;
     }
-    if(game->array[ig+1][jg] != '_'){
+    if(game->array[ig+1][jg] == 'a'){
         rightGraduate = (ig+1)*30;
     }
-    if(game->array[ig-1][jg] != '_'){
+    if(game->array[ig-1][jg] == 'a'){
         leftGraduate = ig*30;
-   // }
-
-}
+    }
+        qDebug() << "aadsdas";
         _position.setX(_position.x() + _speed.x());
         _position.setY(_position.y() + _speed.y());
-        //qDebug() << "rG:" << rightGraduate << " lG:" << leftGraduate << " tG:" << topGraduate << " bG:" << botGraduate;
-        //qDebug() << "xPos:" << _position.x() << " yPos:" << _position.y();
+        qDebug() << "rG:" << rightGraduate << " lG:" << leftGraduate << " tG:" << topGraduate << " bG:" << botGraduate;
+        qDebug() << "xPos:" << _position.x() << " yPos:" << _position.y();
     if((_position.x()==rightGraduate) || (_position.x()==leftGraduate) || (_position.y()==topGraduate) || (_position.y()==botGraduate)){
         _position.setX(_position.x() - _speed.x());
         _position.setY(_position.y() - _speed.y());

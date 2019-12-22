@@ -248,7 +248,7 @@ void Bullet::gameOver()
         gameOverText = "Congratulations! You win!\n";
         gameOverText += "Made by kiod x diemvs\n";
         gameOverText += "22.12.2019";
-        QMessageBox::about(NULL, QObject::tr("u win"), gameOverText);
+        QMessageBox::about(NULL, QObject::tr("Isaac"), gameOverText);
         game->close();
     }
 }

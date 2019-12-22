@@ -8,6 +8,10 @@
 #include <QKeyEvent>
 #include <QGraphicsScene>
 
+#include "construction.h"
+#include "bullet.h"
+#include "bullist.h"
+
 class Player :public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT

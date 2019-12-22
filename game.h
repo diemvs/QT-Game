@@ -27,6 +27,7 @@ class Game: public QGraphicsView{
 public:
     Game(QWidget * parent=nullptr);
     bulList bul;
+    void gameOver();
     //QList<enemy> enemyList;
 public:
     Player *player;
@@ -38,6 +39,7 @@ public:
 private:
     void _level(string path);
     void _levelGeneration();
+
 
 private:
     QTimer _timer;

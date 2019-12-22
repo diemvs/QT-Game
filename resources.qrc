@@ -28,5 +28,6 @@
         <file>Resources/Sprites/Enemies/orc_1.png</file>
         <file>Resources/Sprites/Enemies/skeleton_1.png</file>
         <file>Resources/Sprites/Player/player.png</file>
+        <file>Resources/Sprites/background/gameOver.jpg</file>
     </qresource>
 </RCC>

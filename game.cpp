@@ -33,6 +33,7 @@ Game::Game(QWidget *parent){
     _level("C:\\qt_proj\\Game\\Resources\\Levels\\level_1.txt");
     _levelGeneration();
 
+    qDebug() << "------------------------------";
     qDebug() << "game.cpp: Size of enemylist = " << enemyList.size();
 
     show();
@@ -53,6 +54,7 @@ void Game::_level(string path){
     }
     getline(file,st);
     qDebug() << "game.cpp: count of enemies: " << _countOfEnemies;
+    qDebug() << "------------------------------";
     while(getline(file, st)){
         for (int k = 0; k < 30; k++){
             array[k][row] = st[k];
@@ -308,5 +310,12 @@ void Game::_levelGeneration(){
             }
         }
     }
+}
+
+void Game::gameOver()
+{
+
+    gameScene->clear();
+    setBackgroundBrush(QBrush(QImage(":/images/Resources/Sprites/background/gameOver.jpg")));
 }
 

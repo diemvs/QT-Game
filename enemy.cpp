@@ -48,7 +48,7 @@ int Enemy::damage()
     lifes--;
 
     if(lifes == 0){
-        qDebug() << "enemy.cpp: damage";
+
         delete this;
     }
     return lifes;

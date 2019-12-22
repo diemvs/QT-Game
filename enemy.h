@@ -23,6 +23,10 @@ public:
     Enemy(int x, int y, sceneItems enemyType);
     ~Enemy();
     int damage();
+    bool moveUp();
+    bool moveDown();
+    bool moveLeft();
+    bool moveRight();
 
 private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
@@ -31,12 +35,15 @@ private:
 public slots:
     void move();
     void nextFrame();
+    void getArr();
 
 private:
     QTimer *_timer;
     QPixmap *_sprite;
     int _currentFrame;
-    Game *game;
+    //Game *game;
+    QPointF _position;
+    char arr[30][20];
 
 public:
     int lifes = 2 + rand() % 4;

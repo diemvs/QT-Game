@@ -84,6 +84,7 @@ void Game::_level(string path){
     for(int i = 0; i < _countOfEnemies; i++){
         qDebug()<< "game.cpp: sorted random digits: " << i<< " " << randomDigits[i];
     }
+    file.close();
 }
 
 void Game::_levelGeneration(){
